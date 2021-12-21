@@ -8,29 +8,27 @@ import HomeIcon from '@mui/icons-material/Home';
 import PageviewIcon from '@mui/icons-material/Pageview';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
 
 
-function TopNav() {
+function TopNav({handleLogout, user}) {
    return ( 
-   <div> 
+      <> 
         <Box sx={{ flexGrow: 1 }}>
-       
-        <AppBar id="navbar-container" position="static">
-            <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-               <Link id="sooch" to='/'> Noor </Link>
-            </Typography>
-            <Link to='projects'><Button id="home-btn" color="inherit"><HomeIcon/></Button></Link>
-            <Button color="inherit"><PageviewIcon/></Button>
-            <Button color="inherit"><LogoutIcon/></Button>
-            </Toolbar>
-        </AppBar>
-        
+            <AppBar id="navbar-container" position="static">
+               <Toolbar>
+               <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  <Link id="sooch" to='/'> Noor </Link>
+               </Typography>
+               <Link to='projects'><Button id="home-btn" color="inherit"><HomeIcon/></Button></Link>
+               <Button color="inherit"><PageviewIcon/></Button>
+               {user.username ? <Button color="inherit">Welcome {user.username}<LogoutIcon onClick={handleLogout}/></Button> : null}
+               </Toolbar>
+         </AppBar>
         </Box>
-    </div>
+      </>
    ) 
 }
+        
 
 export default TopNav
 

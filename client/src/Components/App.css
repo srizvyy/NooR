@@ -1,3 +1,6 @@
+html {
+  background-color: black;
+}
 .sign-up-form {
   width: 400px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
@@ -57,4 +60,29 @@
 
 .card-title {
   color: white;
+}
+
+#signin-link {
+  text-decoration: none;
+}
+
+#signup-link {
+  text-decoration: none;
+}
+
+#project-container {
+  background-color: black;
+}
+
+#card-container {
+  float: left;
+  margin-right: 10px;
+  margin-left: 50px;
+  margin-top: 40px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 10px;
+  min-width: 365px;
+  padding: 6px;
+  max-height: 375px;
 }
