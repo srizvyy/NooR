@@ -4,6 +4,7 @@ import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import ProjectContainer from './ProjectContainer';
+import CreateNewForm from './CreateNewForm';
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
@@ -38,6 +39,16 @@ function App() {
     })
   }
 
+  function handleNewCard (addCard) {
+    setProjectsData((project) => [...project, addCard])
+  }
+
+    function handleDeleteProject(deletedProject) {
+    setProjectsData((projects) =>
+      projects.filter((project) => project.id !== deletedProject.id)
+    );
+  }
+
 
   return (
     <>
@@ -46,7 +57,8 @@ function App() {
       <Route exact path="/" element={<Home/>}></Route>
       <Route exact path='login' element={<Login setUser={setUser}/>}></Route>
       <Route exact path='signup' element={<Signup setUser={setUser}/>}></Route>
-      <Route exact path='projects' element={<ProjectContainer projectsData={projectsData}/>}></Route>
+      <Route exact path='projects' element={<ProjectContainer user={user} handleDeleteProject={handleDeleteProject} projectsData={projectsData}/>}></Route>
+      <Route exact path="projects/create-form" element={<CreateNewForm handleNewCard={handleNewCard} user={user}/>}></Route>
       </Routes>
     </>
   );

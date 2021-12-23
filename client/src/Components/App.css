@@ -86,3 +86,7 @@ html {
   padding: 6px;
   max-height: 375px;
 }
+
+.link {
+  text-decoration: none;
+}
