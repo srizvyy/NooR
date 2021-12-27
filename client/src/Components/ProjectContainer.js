@@ -3,9 +3,8 @@ import ProjectCard from './ProjectCard'
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 
-function ProjectContainer({projectsData, handleDeleteProject, user}) {
+function ProjectContainer({projectsData, handleDeleteProject, user, reviewsData}) {
     
-
     
     return (
         <>
@@ -13,7 +12,7 @@ function ProjectContainer({projectsData, handleDeleteProject, user}) {
         <div id='project-container'>
             <div>{projectsData.map((project) => {
                 return (
-                    <ProjectCard key={project.id} project={project} handleDeleteProject={handleDeleteProject} user={user}/>
+                    <ProjectCard key={project.id} project={project} handleDeleteProject={handleDeleteProject} user={user} reviewsData={reviewsData}/>
                 )
             })}</div>
         </div>

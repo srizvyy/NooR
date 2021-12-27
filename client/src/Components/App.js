@@ -5,17 +5,25 @@ import Login from './Login';
 import Signup from './Signup';
 import ProjectContainer from './ProjectContainer';
 import CreateNewForm from './CreateNewForm';
+import SingleCardInfo from './SingleCardInfo';
 import { Routes, Route } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
 function App() {
   const [projectsData, setProjectsData] = useState([])
+  const [reviewsData, setReviewsData] = useState([])
   const [user, setUser] = useState('')
-
+  
   useEffect(() => {
     fetch('/projects')
     .then(res => res.json())
     .then(project => setProjectsData(project))
+  }, [])
+
+  useEffect(() => {
+    fetch('/reviews')
+    .then(res => res.json())
+    .then(review => setReviewsData(review))
   }, [])
 
   useEffect(() => {
@@ -57,8 +65,9 @@ function App() {
       <Route exact path="/" element={<Home/>}></Route>
       <Route exact path='login' element={<Login setUser={setUser}/>}></Route>
       <Route exact path='signup' element={<Signup setUser={setUser}/>}></Route>
-      <Route exact path='projects' element={<ProjectContainer user={user} handleDeleteProject={handleDeleteProject} projectsData={projectsData}/>}></Route>
+      <Route exact path='projects' element={<ProjectContainer reviewsData={reviewsData} user={user} handleDeleteProject={handleDeleteProject} projectsData={projectsData}/>}></Route>
       <Route exact path="projects/create-form" element={<CreateNewForm handleNewCard={handleNewCard} user={user}/>}></Route>
+      <Route exact path={"/projects/:id"} element={<SingleCardInfo  user={user}/>}></Route>
       </Routes>
     </>
   );

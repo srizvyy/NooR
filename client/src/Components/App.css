@@ -90,3 +90,7 @@ html {
 .link {
   text-decoration: none;
 }
+
+#like-color {
+  color: rgb(118, 179, 199);
+}

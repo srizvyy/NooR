@@ -23,7 +23,7 @@ rohail = User.create(username: 'Rohail', password: "password", email: 'rohail@ro
 
 puts 'Seeding Projects'
 
-proj1 = Project.create!(owner_id: kenny.id, title: 'AppTrack', image: 'https://www.bigpharmacy.com.my/scripts/timthumb.php?src=https://www.bigpharmacy.com.my//site_media/img/111059PK.jpg&w=500&zc=1', description: 'User can origanize their job application', language: 'Ruby, React', github: '', livesite: '')
+proj1 = Project.create(owner_id: kenny.id, title: 'AppTrack', image: 'https://www.bigpharmacy.com.my/scripts/timthumb.php?src=https://www.bigpharmacy.com.my//site_media/img/111059PK.jpg&w=500&zc=1', description: 'User can origanize their job application', language: 'Ruby, React', github: '', livesite: '')
 proj2 = Project.create(owner_id: william.id, title: 'Sorting Visualizer', image: 'https://www.bigpharmacy.com.my/scripts/timthumb.php?src=https://www.bigpharmacy.com.my//site_media/img/111059PK.jpg&w=500&zc=1', description: 'User visualize how different sorting algorithms work', language: 'JavaScript(React)', github: '', livesite: '')
 proj3 = Project.create(owner_id: ben.id, title: 'Pathfinding visualizer', image: 'https://www.bigpharmacy.com.my/scripts/timthumb.php?src=https://www.bigpharmacy.com.my//site_media/img/111059PK.jpg&w=500&zc=1', description: 'User can see how different pathfinding algorithms work', language: 'JavaScript', github: '', livesite: '')
 proj4 = Project.create(owner_id: alex.id, title: 'Mount Algo', image: 'https://www.bigpharmacy.com.my/scripts/timthumb.php?src=https://www.bigpharmacy.com.my//site_media/img/111059PK.jpg&w=500&zc=1', description: 'Play mount algo to learn algorithms', language: 'Rails, JavaScript', github: '', livesite: '')
@@ -34,7 +34,7 @@ proj6 = Project.create(owner_id: rohail.id, title: 'Movies', image: 'https://www
 
 puts 'Seeding Reviews'
 
-Review.create!(like: 10, comments: 'Awesome Porject!', user_id: 1, project_id: 1)
+Review.create(like: 10, comments: 'Awesome Porject!', user_id: 1, project_id: 1)
 Review.create(like: 10, comments: 'Awesome Porject!', user_id: 2, project_id: 2)
 Review.create(like: 10, comments: 'Awesome Porject!', user_id: 3, project_id: 3)
 Review.create(like: 10, comments: 'Awesome Porject!', user_id: 4, project_id: 4)
