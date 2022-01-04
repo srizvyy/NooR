@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     end
 
      def create
+        p params 
         review = Review.create!(review_params)
         render json: review
     end

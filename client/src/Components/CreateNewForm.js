@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
 function CreateNewForm({handleNewCard, user}) {
-
+    
     const navigate = useNavigate()
 
     const initialState = {
@@ -15,7 +15,6 @@ function CreateNewForm({handleNewCard, user}) {
     }
 
     const [newCardData, setNewCardData] = useState(initialState)
-
     function handleChangeNewCard (e) {
         setNewCardData({
             ...newCardData,
@@ -55,13 +54,13 @@ function CreateNewForm({handleNewCard, user}) {
     return (
         <div>
             <form onSubmit={handleSubmitNewCard}>
-                <input type="text" placeholder='Title' name='title' onChange={handleChangeNewCard} value={newCardData.title}/>
-                <input type="text" placeholder='Image URL' name='image' onChange={handleChangeNewCard} value={newCardData.image}/>
-                <input type="text" placeholder='Description' name='description' onChange={handleChangeNewCard} value={newCardData.description}/>
-                <input type="text" placeholder='Language' name='language' onChange={handleChangeNewCard} value={newCardData.language}/>
-                <input type="text" placeholder='GitHub link' name='github' onChange={handleChangeNewCard} value={newCardData.github}/>
-                <input type="text" placeholder='LiveSite link' name='livesite' onChange={handleChangeNewCard} value={newCardData.livesite}/>
-                <button type='submit'>Submit</button>
+                <input className='create-new-card' type="text" placeholder='Title' name='title' onChange={handleChangeNewCard} value={newCardData.title}/>
+                <input className='create-new-card' type="text" placeholder='Image URL' name='image' onChange={handleChangeNewCard} value={newCardData.image}/>
+                <textarea id='text-area' className='create-new-card' type="text" placeholder='Description' name='description' onChange={handleChangeNewCard} value={newCardData.description}/>
+                <input className='create-new-card' type="text" placeholder='Language' name='language' onChange={handleChangeNewCard} value={newCardData.language}/>
+                <input className='create-new-card' type="text" placeholder='GitHub link' name='github' onChange={handleChangeNewCard} value={newCardData.github}/>
+                <input className='create-new-card' type="text" placeholder='LiveSite link' name='livesite' onChange={handleChangeNewCard} value={newCardData.livesite}/>
+                <button id='create-new-card-button' type='submit'>Submit</button>
             </form>
         </div>
     )

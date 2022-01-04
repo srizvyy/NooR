@@ -11,11 +11,12 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import UpdateCard from './UpdateCard';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import UpdateIcon from '@mui/icons-material/Update';
 
 function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
+    
 
     const [likeCount, setLikeCount] = useState(project.reviews.map((review)=>review.like))
     // console.log(project.reviews.map((review)=> review.like))
@@ -54,7 +55,6 @@ function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
 
     return (
         
-       <Link to={"/projects/" + project.id}> 
             <Card id='card-container' sx={{ maxWidth: 345 }}>
                 <CardHeader
                     avatar={
@@ -71,19 +71,17 @@ function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
                     </IconButton>
                     }
                     title={project.title}
-                    subheader="September 14, 2016"
+                    subheader={project.language}
                 />
-                <CardMedia
+               <Link to={"/projects/" + project.id}>  <CardMedia
                     component="img"
                     height="194"
                     image={project.image}
                     alt="Project Picture"
-                />
+                /></Link>
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
                     {project.description}
-                    <br />
-                    {project.language}
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
@@ -91,14 +89,13 @@ function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
                     {/* <FavoriteIcon /> */}
                     </IconButton>
                     {/* <IconButton aria-label="share"> */}
-                        <a href={project.github}>Github</a>
-                        <hr />
-                        <a href={project.livesite}>LiveSite</a>
+                        {/* <Link to={"/projects/" + project.id}> <button id='more-info-btn'>More Info</button></Link> */}
+                        {project.owner_id === user.id ? <UpdateIcon id="update-icon"/> : null}
                     {/* </IconButton> */}
                 </CardActions>
                 {project.owner_id === user.id ? <DeleteIcon onClick={handleDelete}/> : null}
             </Card>
-        </Link>
+        
     
             
     )

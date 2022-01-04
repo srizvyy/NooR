@@ -20,7 +20,7 @@ function TopNav({handleLogout, user}) {
                   <Link id="sooch" to='/'> Noor </Link>
                </Typography>
                <Link to='projects'><Button id="home-btn" color="inherit"><HomeIcon/></Button></Link>
-               <Button color="inherit"><PageviewIcon/></Button>
+               {/* <Button color="inherit"><PageviewIcon/></Button> */}
                {user.username ? <Button color="inherit">Welcome {user.username}<LogoutIcon onClick={handleLogout}/></Button> : null}
                </Toolbar>
          </AppBar>

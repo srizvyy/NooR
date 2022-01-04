@@ -10,9 +10,10 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Reviews from './Reviews';
+import ReviewForm from './ReviewForm';
 
-
-function SingleCardInfo() {
+function SingleCardInfo({user, project, reviewsData, setDOMUpdater, setUser, handleNewComment}) {
     const [singleProject, setSingleProject] = useState([])
     const id = useParams().id
     
@@ -21,9 +22,11 @@ function SingleCardInfo() {
     .then(res => res.json())
     .then(data => setSingleProject(data))
   }, [])
+
     return (
         <div>
-           <Card id='card-container' sx={{ maxWidth: 345 }}>
+            {/* <div> */}
+           <Card id='single-card-container' sx={{ maxWidth: 345 }}>
                 <CardHeader
                     avatar={
                     <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
@@ -35,7 +38,7 @@ function SingleCardInfo() {
                     </IconButton>
                     }
                     title={singleProject.title}
-                    subheader="September 14, 2016"
+                    subheader={singleProject.language}
                 />
                 <CardMedia
                     component="img"
@@ -46,8 +49,6 @@ function SingleCardInfo() {
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
                     {singleProject.description}
-                    <br />
-                    {singleProject.language}
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
@@ -62,6 +63,11 @@ function SingleCardInfo() {
                 </CardActions>
                 {/* {project.owner_id === user.id ? <DeleteIcon onClick={handleDelete}/> : null} */}
             </Card>
+            {/* </div> */}
+            <div id="comment-container">
+               <ReviewForm handleNewComment={handleNewComment} setUser={setUser} setDOMUpdater={setDOMUpdater} reviewsData={reviewsData} project={project} user={user}/>
+               <Reviews reviews={project.reviews}/>
+            </div>
         </div>
     )
 }
