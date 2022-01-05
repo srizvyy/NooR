@@ -43,7 +43,7 @@ function SingleCardInfo({user, project, reviewsData, setDOMUpdater, setUser, han
                 <CardMedia
                     component="img"
                     height="194"
-                    image={singleProject.image}
+                    image={singleProject.pic_urls}
                     alt="Project Picture"
                 />
                 <CardContent>

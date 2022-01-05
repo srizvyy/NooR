@@ -26,14 +26,14 @@ function App() {
       fetch(`${location.pathname}`)
         .then(res => res.json())
         .then(data => setProjectsData(data))
-        .then(console.log("new fetch "))
+        // .then(console.log("new fetch "))
     }
   }, [location.pathname, DOMUpdater])
 
   // useEffect(() => {
   //   fetch('/projects')
   //   .then(res => res.json())
-  //   .then(data => console.log(data))
+  //   .then(data => setProjectsData(data))
   // }, [])
 // console.log(filterSearch, projectsData)
   useEffect(() => {
@@ -101,7 +101,7 @@ const handleSearch = (e) => {
       <Route exact path='login' element={<Login setUser={setUser}/>}></Route>
       <Route exact path='signup' element={<Signup setUser={setUser}/>}></Route>
       <Route exact path='/projects' element={<ProjectContainer handleSearch={handleSearch} reviewsData={reviewsData} user={user} handleDeleteProject={handleDeleteProject} projectsData={filterSearch}/>}></Route>
-      <Route exact path="projects/create-form" element={<CreateNewForm handleNewCard={handleNewCard} user={user}/>}></Route>
+      <Route exact path="projects/create-form" element={<CreateNewForm project={filterSearch} handleNewCard={handleNewCard} user={user}/>}></Route>
       <Route exact path={"/projects/:id"} element={<SingleCardInfo handleNewComment={handleNewComment} setUser={setUser} setDOMUpdater={setDOMUpdater} reviewsData={reviewsData} project={projectsData} user={user}/>}></Route>
       </Routes>
     </>

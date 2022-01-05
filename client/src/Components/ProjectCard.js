@@ -76,7 +76,7 @@ function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
                <Link to={"/projects/" + project.id}>  <CardMedia
                     component="img"
                     height="194"
-                    image={project.image}
+                    image={project.pic_urls}
                     alt="Project Picture"
                 /></Link>
                 <CardContent>

@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
 
     def project_params
        
-        params.permit(:owner_id, :title, :image, :description, :language, :github, :livesite, :time)
+        params.permit(:owner_id, :title, :description, :language, :github, :livesite, :time, :pic_urls)
     end
 
 end

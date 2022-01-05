@@ -7,7 +7,7 @@ function CreateNewForm({handleNewCard, user}) {
 
     const initialState = {
         title: '',
-        image: '',
+        // pic_urls: null,
         description: '',
         language: '',
         github: '',
@@ -15,6 +15,8 @@ function CreateNewForm({handleNewCard, user}) {
     }
 
     const [newCardData, setNewCardData] = useState(initialState)
+    const [image, setImage] = useState(null)
+    
     function handleChangeNewCard (e) {
         setNewCardData({
             ...newCardData,
@@ -22,28 +24,34 @@ function CreateNewForm({handleNewCard, user}) {
         })
     }
 
+    //  function filesSelectedChangeHandler(e) {
+    //      setNewCardData({
+    //         pic_urls: e.target.files
+    //     })
+    // }
+
+
     function handleSubmitNewCard(e) {
         e.preventDefault()
+        
+        const formData = new FormData();
+        formData.append('owner_id', user.id)
+        formData.append('title', newCardData.title)
+        formData.append('description', newCardData.description)
+        formData.append('language', newCardData.language)
+        formData.append('github', newCardData.github)
+        formData.append('livesite', newCardData.livesite)
+        formData.append('pic_urls', image)
+        
         fetch('/projects', {
             method: 'POST',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                owner_id: user.id,
-                title: newCardData.title,
-                image: newCardData.image,
-                description: newCardData.description,
-                language: newCardData.language,
-                github: newCardData.github,
-                livesite: newCardData.livesite
-            })
+            body: formData,
         })
         .then(res => {
             if (res.ok) {
                 res.json().then((newCard) => {
-            setNewCardData(initialState)
-            handleNewCard(newCard)
+            // setNewCardData(initialState)
+            console.log(newCard)
             navigate('/projects')
                 })
             }
@@ -55,7 +63,7 @@ function CreateNewForm({handleNewCard, user}) {
         <div>
             <form onSubmit={handleSubmitNewCard}>
                 <input className='create-new-card' type="text" placeholder='Title' name='title' onChange={handleChangeNewCard} value={newCardData.title}/>
-                <input className='create-new-card' type="text" placeholder='Image URL' name='image' onChange={handleChangeNewCard} value={newCardData.image}/>
+                <input className='create-new-card' type="file" accept='image/*' name='pic_urls' /*onChange={filesSelectedChangeHandler} */ onChange={(e) => setImage(e.target.files[0])} />
                 <textarea id='text-area' className='create-new-card' type="text" placeholder='Description' name='description' onChange={handleChangeNewCard} value={newCardData.description}/>
                 <input className='create-new-card' type="text" placeholder='Language' name='language' onChange={handleChangeNewCard} value={newCardData.language}/>
                 <input className='create-new-card' type="text" placeholder='GitHub link' name='github' onChange={handleChangeNewCard} value={newCardData.github}/>
