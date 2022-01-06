@@ -42,18 +42,29 @@ function Signup({setUser}) {
     }
 
     return (
-        <div className="sign-up-form">
-            {/* <AccountCircleIcon id="user-icon"/> */}
-            <h1>Sign Up <br /><span id="fill-out-form">Please fill this form to create an account</span></h1>
-            <form onSubmit={handleSubmitSignupForm} >
-                <input type="username" className="input-box" placeholder="Username" name="username" value={signupForm.username} onChange={handleSignupFormChange}/>
-                <input type="email" className="input-box" placeholder="email" name="email" value={signupForm.email} onChange={handleSignupFormChange}/>
-                <input type="password" className="input-box" placeholder="Password" name="password" value={signupForm.password} onChange={handleSignupFormChange}/>
-                <p> <span><input type="checkbox"/></span> I accept terms and conditions</p>
-                <button className="sign-btn">Sign up</button>
-                <p>Do you have an account? <Link id="signin-link" to="/login"><a href="#" className="sign-in-btn">Sign in</a></Link></p>
-            </form>
-        </div>
+        <form onSubmit={handleSubmitSignupForm}>
+            <div class="form">
+                <div class="title">Welcome</div>
+                <div class="subtitle">Let's create your account!</div>
+                <div class="input-container ic1">
+                    <input id="firstname" class="input" name='username' type="text" placeholder=" " value={signupForm.username} onChange={handleSignupFormChange} />
+                    <div class="cut"></div>
+                    <label for="firstname" class="placeholder">Username</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="lastname" class="input" type="text" placeholder=" " name='email' value={signupForm.email} onChange={handleSignupFormChange} />
+                    <div class="cut"></div>
+                    <label for="lastname" class="placeholder">Email</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="email" class="input" type="password" placeholder=" " name='password' value={signupForm.password} onChange={handleSignupFormChange} />
+                    <div class="cut cut-short"></div>
+                    <label for="email" class="placeholder">Password</label>
+                </div>
+                <button type="text" class="submit">Create Account</button>
+                <p id='do-you-account'>Do you have an account? <Link id="signin-link" to="/login"><a href="#" className="sign-in-btn">Log in</a></Link></p>
+            </div>
+        </form>
     )
 }
 

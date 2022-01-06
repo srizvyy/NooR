@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 function ReviewForm({user, project, setDOMUpdater, handleNewComment}) {
-    console.log(project)
+    // console.log(project)
     const [commentData, setcommentData] = useState({
         project_id: project.id,
         user_id: user.id,
@@ -55,8 +55,6 @@ function ReviewForm({user, project, setDOMUpdater, handleNewComment}) {
                 </form >
                 <br />
             </div>
-
-            
         )
 }
 

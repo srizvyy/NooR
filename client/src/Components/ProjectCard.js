@@ -8,12 +8,9 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import UpdateIcon from '@mui/icons-material/Update';
 
 function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
     
@@ -50,7 +47,7 @@ function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
             }
         })
     }
-
+    
     
 
     return (
@@ -58,7 +55,7 @@ function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
             <Card id='card-container' sx={{ maxWidth: 345 }}>
                 <CardHeader
                     avatar={
-                    <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                    <Avatar src={project.user.img} sx={{ bgcolor: red[500] }} aria-label="recipe">
                         
                     </Avatar>
                     }
@@ -73,7 +70,8 @@ function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
                     title={project.title}
                     subheader={project.language}
                 />
-               <Link to={"/projects/" + project.id}>  <CardMedia
+               <Link to={"/projects/" + project.id}>  
+               <CardMedia
                     component="img"
                     height="194"
                     image={project.pic_urls}
@@ -87,13 +85,13 @@ function ProjectCard({project, handleDeleteProject, user, reviewsData}) {
                 <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
                     {/* <FavoriteIcon /> */}
+                {project.owner_id === user.id ? <DeleteIcon id='delete-icon' onClick={handleDelete}/> : null}
                     </IconButton>
                     {/* <IconButton aria-label="share"> */}
                         {/* <Link to={"/projects/" + project.id}> <button id='more-info-btn'>More Info</button></Link> */}
-                        {project.owner_id === user.id ? <UpdateIcon id="update-icon"/> : null}
+                        {/* {project.owner_id === user.id ? <UpdateIcon id="update-icon"/> : null} */}
                     {/* </IconButton> */}
                 </CardActions>
-                {project.owner_id === user.id ? <DeleteIcon onClick={handleDelete}/> : null}
             </Card>
         
     

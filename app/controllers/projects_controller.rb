@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 
     def update
         project = find_project
-        project.update!(car_params)
+        project.update!(project_params)
         render json: project
     end
 

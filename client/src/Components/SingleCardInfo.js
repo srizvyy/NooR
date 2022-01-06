@@ -56,9 +56,9 @@ function SingleCardInfo({user, project, reviewsData, setDOMUpdater, setUser, han
                     {/* <FavoriteIcon /> */}
                     </IconButton>
                     {/* <IconButton aria-label="share"> */}
-                        <a href={singleProject.github}>Github</a>
+                        <a className='link' target='_blank' href={singleProject.github}>Github</a>
                         <hr />
-                        <a href={singleProject.livesite}>LiveSite</a>
+                        <a className='link' target='_blank' href={singleProject.livesite}>LiveSite</a>
                     {/* </IconButton> */}
                 </CardActions>
                 {/* {project.owner_id === user.id ? <DeleteIcon onClick={handleDelete}/> : null} */}

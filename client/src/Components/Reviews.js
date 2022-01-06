@@ -7,7 +7,7 @@ function Reviews({reviews}) {
     else {
         return (
             reviews.map((review) => {
-                console.log(review.comment)
+                // console.log(review.comment)
                 return (
                     <div id='comments' key={reviews.id}>
                         <h2 key={reviews.id} className='reviews'>{review.name}</h2>

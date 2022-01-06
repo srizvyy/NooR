@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function CreateNewForm({handleNewCard, user}) {
+function CreateNewForm({user}) {
     
     const navigate = useNavigate()
 
     const initialState = {
         title: '',
-        // pic_urls: null,
         description: '',
         language: '',
         github: '',
@@ -23,13 +22,6 @@ function CreateNewForm({handleNewCard, user}) {
             [e.target.name]: e.target.value
         })
     }
-
-    //  function filesSelectedChangeHandler(e) {
-    //      setNewCardData({
-    //         pic_urls: e.target.files
-    //     })
-    // }
-
 
     function handleSubmitNewCard(e) {
         e.preventDefault()
@@ -50,7 +42,6 @@ function CreateNewForm({handleNewCard, user}) {
         .then(res => {
             if (res.ok) {
                 res.json().then((newCard) => {
-            // setNewCardData(initialState)
             console.log(newCard)
             navigate('/projects')
                 })
@@ -61,9 +52,10 @@ function CreateNewForm({handleNewCard, user}) {
 
     return (
         <div>
-            <form onSubmit={handleSubmitNewCard}>
+            <h2 className='new-form'>Add New Project</h2>
+            <form id='project-form' onSubmit={handleSubmitNewCard}>
                 <input className='create-new-card' type="text" placeholder='Title' name='title' onChange={handleChangeNewCard} value={newCardData.title}/>
-                <input className='create-new-card' type="file" accept='image/*' name='pic_urls' /*onChange={filesSelectedChangeHandler} */ onChange={(e) => setImage(e.target.files[0])} />
+                <input className='create-new-card' type="file" accept='image/*' name='pic_urls' onChange={(e) => setImage(e.target.files[0])} />
                 <textarea id='text-area' className='create-new-card' type="text" placeholder='Description' name='description' onChange={handleChangeNewCard} value={newCardData.description}/>
                 <input className='create-new-card' type="text" placeholder='Language' name='language' onChange={handleChangeNewCard} value={newCardData.language}/>
                 <input className='create-new-card' type="text" placeholder='GitHub link' name='github' onChange={handleChangeNewCard} value={newCardData.github}/>

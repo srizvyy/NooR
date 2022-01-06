@@ -5,7 +5,9 @@ import Login from './Login';
 import Signup from './Signup';
 import ProjectContainer from './ProjectContainer';
 import CreateNewForm from './CreateNewForm';
+import CreateNewResume from './CreateNewResume';
 import SingleCardInfo from './SingleCardInfo';
+import ResumeContainer from './ResumeContainer';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
@@ -16,10 +18,6 @@ function App() {
   const [user, setUser] = useState('')
   const location = useLocation()
   const [DOMUpdater, setDOMUpdater] = useState(0)
- 
-  // console.log(reviewsData)
-  // console.log(projectsData)
-  // console.log(user)
 
    useEffect(() => {
     if (location.pathname.includes("projects")) {
@@ -30,12 +28,6 @@ function App() {
     }
   }, [location.pathname, DOMUpdater])
 
-  // useEffect(() => {
-  //   fetch('/projects')
-  //   .then(res => res.json())
-  //   .then(data => setProjectsData(data))
-  // }, [])
-// console.log(filterSearch, projectsData)
   useEffect(() => {
     fetch('/reviews')
     .then(res => res.json())
@@ -92,7 +84,6 @@ const handleSearch = (e) => {
     );
   }
 
-
   return (
     <>
       <TopNav user={user} setUser={setUser} handleLogout={handleLogout}/>
@@ -103,6 +94,8 @@ const handleSearch = (e) => {
       <Route exact path='/projects' element={<ProjectContainer handleSearch={handleSearch} reviewsData={reviewsData} user={user} handleDeleteProject={handleDeleteProject} projectsData={filterSearch}/>}></Route>
       <Route exact path="projects/create-form" element={<CreateNewForm project={filterSearch} handleNewCard={handleNewCard} user={user}/>}></Route>
       <Route exact path={"/projects/:id"} element={<SingleCardInfo handleNewComment={handleNewComment} setUser={setUser} setDOMUpdater={setDOMUpdater} reviewsData={reviewsData} project={projectsData} user={user}/>}></Route>
+      <Route exact path={'/resumes'} element={<ResumeContainer user={user} />}></Route>
+      <Route exact path='resumes/create-resume' element={<CreateNewResume user={user} />}></Route>
       </Routes>
     </>
   );
