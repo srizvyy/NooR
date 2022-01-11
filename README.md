@@ -8,15 +8,9 @@
 
 here are the technologies utilized for NooR:
 
-• Frontend:
-• React
-• Three.js
-• CSS - material ui/styled
+• Frontend: React, Three.js, CSS - material ui/styled
 
-• Backend:
-• Ruby
-• Rails
-• PostgreSQL
+• Backend: Ruby, Rails, PostgreSQL
 
 ## Other Dependencies
 
