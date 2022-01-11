@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function ReviewForm({user, project, setDOMUpdater, handleNewComment}) {
+function ReviewForm({user, project, setDOMUpdater, handleNewComment, handleDeleteComment, reviewsData}) {
     // console.log(project)
     const [commentData, setcommentData] = useState({
         project_id: project.id,
@@ -41,6 +41,18 @@ function ReviewForm({user, project, setDOMUpdater, handleNewComment}) {
         .then(setDOMUpdater(Math.random()));
         
     }
+
+     function handleDeleteComments () {
+        fetch(`/reviews/${reviewsData.id}`, {
+            method: "Delete"
+        })
+        .then(res => {
+            if (res.ok) {
+                handleDeleteComment(reviewsData)
+            }
+        })
+    }
+    
 
      
     return (

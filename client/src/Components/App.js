@@ -78,10 +78,14 @@ const handleSearch = (e) => {
   }
   
   
-    function handleDeleteProject(deletedProject) {
+  function handleDeleteProject(deletedProject) {
     setProjectsData((projects) =>
       projects.filter((project) => project.id !== deletedProject.id)
     );
+  }
+
+  function handleDeleteComment(deletedComment) {
+    setReviewsData((comments) => comments.filter((comment)  => comment.id !== deletedComment))
   }
 
   return (
@@ -93,7 +97,7 @@ const handleSearch = (e) => {
       <Route exact path='signup' element={<Signup setUser={setUser}/>}></Route>
       <Route exact path='/projects' element={<ProjectContainer handleSearch={handleSearch} reviewsData={reviewsData} user={user} handleDeleteProject={handleDeleteProject} projectsData={filterSearch}/>}></Route>
       <Route exact path="projects/create-form" element={<CreateNewForm project={filterSearch} handleNewCard={handleNewCard} user={user}/>}></Route>
-      <Route exact path={"/projects/:id"} element={<SingleCardInfo handleNewComment={handleNewComment} setUser={setUser} setDOMUpdater={setDOMUpdater} reviewsData={reviewsData} project={projectsData} user={user}/>}></Route>
+      <Route exact path={"/projects/:id"} element={<SingleCardInfo handleDeleteComment={handleDeleteComment} handleNewComment={handleNewComment} setUser={setUser} setDOMUpdater={setDOMUpdater} reviewsData={reviewsData} project={projectsData} user={user}/>}></Route>
       <Route exact path={'/resumes'} element={<ResumeContainer user={user} />}></Route>
       <Route exact path='resumes/create-resume' element={<CreateNewResume user={user} />}></Route>
       </Routes>

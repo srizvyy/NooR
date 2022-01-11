@@ -13,7 +13,7 @@ import { useParams } from 'react-router-dom';
 import Reviews from './Reviews';
 import ReviewForm from './ReviewForm';
 
-function SingleCardInfo({user, project, reviewsData, setDOMUpdater, setUser, handleNewComment}) {
+function SingleCardInfo({user, project, reviewsData, setDOMUpdater, setUser, handleNewComment, handleDeleteComment}) {
     const [singleProject, setSingleProject] = useState([])
     const id = useParams().id
     
@@ -65,7 +65,7 @@ function SingleCardInfo({user, project, reviewsData, setDOMUpdater, setUser, han
             </Card>
             {/* </div> */}
             <div id="comment-container">
-               <ReviewForm handleNewComment={handleNewComment} setUser={setUser} setDOMUpdater={setDOMUpdater} reviewsData={reviewsData} project={project} user={user}/>
+               <ReviewForm handleDeleteComment={handleDeleteComment} handleNewComment={handleNewComment} setUser={setUser} setDOMUpdater={setDOMUpdater} reviewsData={reviewsData} project={project} user={user}/>
                <Reviews reviews={project.reviews}/>
             </div>
         </div>

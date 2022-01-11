@@ -17,9 +17,9 @@ function TopNav({handleLogout, user}) {
             <AppBar id="navbar-container" position="static">
                <Toolbar>
                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                  <Link id="sooch" to='/'> Noor </Link>
+                  <Link id="sooch" to='/'> NooR </Link>
                </Typography>
-               <Link to='projects'><Button id="home-btn" color="inherit"><HomeIcon/></Button></Link>
+              {user.id ? <Link to='projects'><Button id="home-btn" color="inherit"><HomeIcon/></Button></Link> : null}
                {/* <Button color="inherit"><PageviewIcon/></Button> */}
                {user.username ? <Button color="inherit">Welcome {user.username}<LogoutIcon onClick={handleLogout}/></Button> : null}
                </Toolbar>
