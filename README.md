@@ -30,7 +30,7 @@ rails db:migrate
 
 ## Running NooR
 
-Once all the dependencies are installed, Grocer can be started. First ensure that your local PostgreSQL server is running. Then start the backend by navigating to the root directory in your terminal and running this command:
+Once all the dependencies are installed, NooR can be started. First ensure that your local PostgreSQL server is running. Then start the backend by navigating to the root directory in your terminal and running this command:
 
 rails s
 Then the frontend can be started. Navigate to the root directory in another terminal window and run this command:
